@@ -5,5 +5,5 @@ create table tbl_board(
 	writer varchar(30) not null,
 	regDate timestamp not null default now(),
 	viewCnt int default 0,
-	primary key(bnm)
+	primary key(bno)
 );
