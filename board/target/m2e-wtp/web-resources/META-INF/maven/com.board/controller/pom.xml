@@ -118,6 +118,8 @@
 		</dependency>        
 		
 		
+		<!-- 스프링과  DB연동 -->
+		
 		<!-- maria db -->
 		<dependency>
 		    <groupId>org.mariadb.jdbc</groupId>
