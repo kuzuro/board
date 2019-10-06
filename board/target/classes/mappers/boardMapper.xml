@@ -28,4 +28,14 @@
 			bno = #{bno}			
 	</select>
 
+	<!-- 게시물 수정 -->
+	<update id="modify" parameterType="com.board.domain.BoardVO" >
+		update tbl_board
+			set
+				title = #{title},
+				content = #{content},
+				writer = #{writer}
+			where bno = #{bno}
+	</update>
+
 </mapper>
