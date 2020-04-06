@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.board.domain.BoardVO;
+import com.board.domain.Page;
 import com.board.service.BoardService;
 
 @Controller
@@ -78,12 +79,33 @@ public class BoardController {
 		service.delete(bno);		
 
 		return "redirect:/board/list";
-	}
+	} 
 	
 	// 게시물 목록 + 페이징 추가
 	@RequestMapping(value = "/listPage", method = RequestMethod.GET)
 	public void getListPage(Model model, @RequestParam("num") int num) throws Exception {
+
 		
+		Page page = new Page();
+		
+		page.setNum(num);
+		page.setCount(service.count());		
+		
+		List<BoardVO> list = null; 
+		list = service.listPage(page.getDisplayPost(), page.getPostNum());
+		
+		model.addAttribute("list", list);		 
+		model.addAttribute("pageNum", page.getPageNum());
+		
+		model.addAttribute("startPageNum", page.getStartPageNum());
+		model.addAttribute("endPageNum", page.getEndPageNum());
+ 
+		model.addAttribute("prev", page.getPrev());
+		model.addAttribute("next", page.getNext());		
+		
+		model.addAttribute("select", num);
+		
+		/*
 		// 게시물 총 갯수
 		int count = service.count();
 		
@@ -113,8 +135,8 @@ public class BoardController {
 			endPageNum = endPageNum_tmp;
 		}
 		
-		boolean prev = startPageNum == 1 ? false : true;
-		boolean next = endPageNum * pageNum_cnt >= count ? false : true; 		
+		boolean prev = startPageNum == 1 ? false : true; 
+		boolean next = endPageNum * pageNum_cnt >= count ? false : true;
 		
 		List<BoardVO> list = null; 
 		list = service.listPage(displayPost, postNum);
@@ -124,14 +146,13 @@ public class BoardController {
 		// 시작 및 끝 번호
 		model.addAttribute("startPageNum", startPageNum);
 		model.addAttribute("endPageNum", endPageNum);
-		
+
 		// 이전 및 다음 
 		model.addAttribute("prev", prev);
-		model.addAttribute("next", next);
+		model.addAttribute("next", next);		
 		
 		// 현재 페이지
 		model.addAttribute("select", num);
-		
+		*/
 	}
 }
- 

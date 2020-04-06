@@ -53,16 +53,16 @@
 	</c:if>
 	
 	<c:forEach begin="${startPageNum}" end="${endPageNum}" var="num">
-  		<span>
-  		
-  			<c:if test="${select != num}">
-  				<a href="/board/listPage?num=${num}">${num}</a>
-  			</c:if> 			
-  			
-  			<c:if test="${select == num}">
-  				<b>${num}</b>
-  			</c:if>
-  			
+		<span>
+		
+			<c:if test="${select != num}">
+				<a href="/board/listPage?num=${num}">${num}</a>
+			</c:if> 			
+			
+			<c:if test="${select == num}">
+				<b>${num}</b>
+			</c:if>
+	 			
 		</span>
 	</c:forEach>
 	
