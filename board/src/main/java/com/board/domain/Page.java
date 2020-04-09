@@ -60,11 +60,11 @@ public class Page {
 	public int getPageNumCnt() {
 		return pageNumCnt;
 	}
-
+	
 	public int getEndPageNum() {
 		return endPageNum;
 	}
-
+	
 	public int getStartPageNum() {
 		return startPageNum;
 	}
@@ -72,7 +72,7 @@ public class Page {
 	public boolean getPrev() {
 		return prev;
 	}	
-
+	
 	public boolean getNext() {
 		return next;
 	}
