@@ -2,6 +2,11 @@
     pageEncoding="UTF-8"%>
 
 <ul>
+
+	<li>
+		<a href="/board/listPageSearch?num=1">글 목록(페이징 + 검색)</a>	
+	</li>
+	
 	<li>
 		<a href="/board/listPage?num=1">글 목록(페이징)</a>	
 	</li>

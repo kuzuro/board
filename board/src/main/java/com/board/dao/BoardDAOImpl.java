@@ -69,4 +69,20 @@ public class BoardDAOImpl implements BoardDAO {
 		return sql.selectList(namespace + ".listPage", data);
 	}
 
+	// 게시물 목록 + 페이징 + 검색
+	@Override
+	public List<BoardVO> listPageSearch(
+			int displayPost, int postNum, String searchType, String keyword) throws Exception {
+
+		HashMap<String, Object> data = new HashMap<String, Object>();
+		
+		data.put("displayPost", displayPost);
+		data.put("postNum", postNum);
+		
+		data.put("searchType", searchType);
+		data.put("keyword", keyword);
+		
+		return sql.selectList(namespace + ".listPageSearch", data);
+	}
+
 }
