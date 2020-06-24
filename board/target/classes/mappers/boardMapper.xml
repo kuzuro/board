@@ -45,10 +45,14 @@
 		where bno = #{bno}
 	</delete>
 	
+	
+	
 	<!-- 게시물 총 갯수 -->
 	<select id="count" resultType="int">
 		select count(bno) from tbl_board
 	</select>
+	
+	
 	
 	<!-- 게시물 목록 + 페이징 -->
 	<select id="listPage" parameterType="hashMap" resultType="com.board.domain.BoardVO">
@@ -58,6 +62,8 @@
 		order by bno desc
 			limit #{displayPost}, #{postNum}
 	</select>	
+	
+	
 	
 	<!-- 게시물 목록 + 페이징 + 검색 -->
 	<select id="listPageSearch" parameterType="hashMap" resultType="com.board.domain.BoardVO">
@@ -85,5 +91,29 @@
 		order by bno desc
 			limit #{displayPost}, #{postNum}
 	</select>	
+	
+	<!-- 게시물 총 갯수 + 검색 적용 -->
+	<select id="searchCount" parameterType="hashMap" resultType="int">
+		select count(bno) from tbl_board		
+			
+		<if test='searchType.equals("title")'>
+			WHERE title LIKE concat('%', #{keyword}, '%')
+		</if>
+		
+		<if test='searchType.equals("content")'>
+			WHERE content LIKE concat('%', #{keyword}, '%')
+		</if>
+		
+		<if test='searchType.equals("title_content")'>
+			WHERE title LIKE concat('%', #{keyword}, '%') 
+				or content LIKE concat('%', #{keyword}, '%')
+		</if>
+		
+		<if test='searchType.equals("writer")'>
+			WHERE writer LIKE concat('%', #{keyword}, '%')
+		</if>
+		
+	</select>
+	
 	
 </mapper>

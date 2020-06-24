@@ -39,8 +39,8 @@ public class Page {
 		this.count = count;
 		
 		dataCalc();
-	}
-	
+	}	
+		
 	public int getCount() {
 		return count;
 	}
@@ -76,7 +76,9 @@ public class Page {
 	public boolean getNext() {
 		return next;
 	}
-		
+	
+	
+	
 	private void dataCalc() {
 		
 		// 마지막 번호
@@ -98,4 +100,50 @@ public class Page {
 		displayPost = (num - 1) * postNum;
 		
 	}
+	
+	
+	// 검색 타입과 검색어
+	/*
+	private String searchTypeKeyword;	
+	
+	public void setSearchTypeKeyword(String searchType, String keyword) {
+		
+		if(searchType.equals("") || keyword.equals("")) {
+			searchTypeKeyword = "";	
+		} else {
+			searchTypeKeyword = "&searchType=" + searchType + "&keyword=" + keyword;	
+		}		
+	}
+	*/
+	
+	public String getSearchTypeKeyword() {
+		
+		if(searchType.equals("") || keyword.equals("")) {
+			return "";	
+		} else {
+			return "&searchType=" + searchType + "&keyword=" + keyword;	
+		}
+	}
+	
+	private String searchType;
+	private String keyword;	
+	
+	public void setSearchType(String searchType) {
+		this.searchType = searchType;		
+	}
+	
+	public String getSearchType() {
+		return searchType;
+	}	
+	
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;		
+	}	
+
+	public String getKeyword() {
+		return keyword;
+	}
+	
+	
+	
 }
