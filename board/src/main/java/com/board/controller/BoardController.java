@@ -43,7 +43,7 @@ public class BoardController {
 	
 	// 게시물 작성
 	@RequestMapping(value = "/write", method = RequestMethod.POST)
-	public String posttWirte(BoardVO vo) throws Exception {
+	public String postWirte(BoardVO vo) throws Exception {
 		 service.write(vo);
 		 
 		 return "redirect:/board/list";
